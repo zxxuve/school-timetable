@@ -1,80 +1,69 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>우리 학교 시간표</title>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff"><title>오늘 뭐 먹지? · 학교 급식</title>
 <style>
-:root{--blue:#2864dc;--bg:#f5f7fb;--ink:#172033;--muted:#6b7280;--line:#e5e9f2}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}
-header{background:#fff;padding:22px 18px 16px;border-bottom:1px solid var(--line)}h1{font-size:23px;margin:0 0 5px}header p{margin:0;color:var(--muted);font-size:13px}
-main{padding:14px;max-width:720px;margin:auto}.card{background:white;border:1px solid var(--line);border-radius:17px;padding:16px;margin-bottom:13px;box-shadow:0 3px 12px #1b31500a}
-h2{font-size:17px;margin:0 0 13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px}input,select{width:100%;padding:11px;border:1px solid #d9dfeb;border-radius:10px;background:#fff;color:var(--ink);font-size:15px;min-width:0}
-button{border:0;border-radius:11px;background:var(--blue);color:white;padding:12px 14px;font-size:14px;font-weight:650;cursor:pointer}button.secondary{background:#edf2ff;color:#244fb5}button.full{width:100%;margin-top:11px}
-.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}
-.tabs{display:flex;gap:6px;margin-bottom:12px}.tabs button{flex:1;padding:10px 4px}.tabs button.active{background:var(--blue);color:#fff}.tabs button:not(.active){background:#e9edf5;color:#465168}
-.notice{font-size:12px;line-height:1.5;color:var(--muted)}.status{font-size:13px;margin-top:9px;color:#526078;white-space:pre-wrap}
-.lesson{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}.period{background:#edf2ff;color:#2455bf;border-radius:9px;padding:8px 10px;font-weight:750}.subject{font-weight:700}.small{font-size:12px;color:var(--muted);margin-top:3px}
-.dayhead{font-weight:700;margin:13px 0 7px}.empty{padding:18px;text-align:center;color:var(--muted);font-size:13px;background:#f8faff;border-radius:12px}
-.exam{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.exam:last-child{border:0}.dday{font-size:19px;font-weight:800;color:var(--blue);white-space:nowrap}
-.hidden{display:none}.smallbtn{padding:8px 10px;font-size:12px}
+:root{--blue:#3568dc;--ink:#172033;--muted:#697386;--line:#e6eaf1;--bg:#f5f7fb;--green:#e8f7ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:var(--ink)}
+header{background:#fff;padding:22px 18px 18px;border-bottom:1px solid var(--line)}.brand{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:.04em}h1{font-size:25px;margin:6px 0}header p{font-size:13px;color:var(--muted);margin:0}
+main{max-width:720px;margin:auto;padding:14px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:13px;box-shadow:0 4px 14px #18294d08}
+h2{font-size:17px;margin:0 0 13px}.row{display:flex;gap:8px;align-items:center}.row>*{min-width:0}.row input{flex:1}
+input,select{width:100%;padding:12px;border:1px solid #d9dfeb;border-radius:11px;background:white;font-size:15px;color:var(--ink)}button{border:0;border-radius:11px;background:var(--blue);color:#fff;font-weight:700;font-size:14px;padding:12px 14px;cursor:pointer}.secondary{background:#edf2ff;color:#2452b7}.full{width:100%;margin-top:10px}
+.tabs{display:flex;gap:6px;margin-bottom:13px}.tabs button{flex:1;padding:10px 4px}.tabs .active{background:var(--blue);color:white}.tabs button:not(.active){background:#edf0f6;color:#4d596d}
+.datebar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}.datebar button{padding:9px 12px}.datebar strong{font-size:15px}
+.daylabel{font-size:12px;font-weight:800;color:var(--muted);margin-bottom:8px}.menuitem{padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.7}.menuitem:last-child{border:0}.dish{display:block}.allergy{font-size:11px;color:#9a6a17;background:#fff6dd;border-radius:6px;padding:2px 5px;margin-left:4px}
+.cal{font-size:12px;color:var(--muted);margin-top:10px}.empty{padding:23px 10px;text-align:center;background:#f8faff;border-radius:13px;color:var(--muted);font-size:13px;line-height:1.7}.status{font-size:12px;color:var(--muted);line-height:1.6;margin-top:8px;white-space:pre-wrap}.hidden{display:none}.badge{display:inline-block;background:var(--green);color:#21734a;padding:5px 9px;border-radius:99px;font-size:11px;font-weight:750}.schoolname{font-size:13px;color:var(--muted);margin-top:4px}.foot{font-size:11px;color:#8b93a3;text-align:center;padding:8px 10px 25px;line-height:1.6}
 </style></head><body>
-<header><h1>우리 학교 시간표</h1><p>학급별 시간표 · 오늘의 수업 · 시험 D-day</p></header>
+<header><div class="brand">SCHOOL MEAL</div><h1>오늘 뭐 먹지? 🍚</h1><p>우리 학교 급식 메뉴를 날짜별로 확인해요.</p></header>
 <main>
-<section class="card"><h2>학교 설정</h2>
-<div class="grid">
-<div><label>NEIS 인증키</label><input id="key" placeholder="인증키 입력" autocomplete="off"></div>
-<div><label>교육청 코드</label><input id="edu" placeholder="예: B10 (서울)" maxlength="3"></div>
-<div><label>학교 코드</label><input id="school" placeholder="학교 표준코드"></div>
-<div><label>학교급</label><select id="kind"><option value="his">고등학교</option><option value="mis">중학교</option><option value="els">초등학교</option></select></div>
-<div><label>학년</label><select id="grade"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
-<div><label>반</label><select id="klass"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div>
-</div><button class="full" onclick="saveSettings()">설정 저장</button>
-<div class="status" id="configStatus">학교 설정을 입력해 주세요.</div>
-<p class="notice">인증키는 NEIS 교육정보 개방 포털에서 무료로 신청할 수 있어요. 교육청 코드와 학교 코드는 학교 정보에서 확인할 수 있습니다. 설정은 이 기기에 저장됩니다.</p>
-</section>
-<section class="card"><div class="tabs"><button id="tabToday" class="active" onclick="showTab('today')">오늘</button><button id="tabWeek" onclick="showTab('week')">주간 시간표</button><button id="tabExam" onclick="showTab('exam')">시험 D-day</button></div>
-<div id="todayPane"><h2 id="todayTitle">오늘의 수업</h2><div id="todayList" class="empty">학교 설정을 저장한 뒤 시간표를 불러오세요.</div><button class="full" onclick="loadTimetable()">시간표 새로고침</button></div>
-<div id="weekPane" class="hidden"><h2>요일별 시간표</h2><div class="row"><div><label>주 시작일</label><input id="weekDate" type="date"></div><button onclick="loadTimetable()">불러오기</button></div><div id="weekList"></div></div>
-<div id="examPane" class="hidden"><h2>시험 일정</h2><div class="grid"><div><label>시험 이름</label><input id="examName" placeholder="예: 2학기 중간고사"></div><div><label>시험 날짜</label><input id="examDate" type="date"></div></div><button class="full" onclick="addExam()">시험 추가</button><div id="examList"></div></div>
-</section>
-<section class="card"><h2>처음 사용하는 방법</h2><ol class="notice"><li>NEIS 인증키를 신청하고 교육청 코드·학교 코드를 확인합니다.</li><li>학교 설정에 인증키와 코드를 입력한 후 저장합니다.</li><li>학년과 반을 선택하고 시간표 새로고침을 누릅니다.</li><li>시험 D-day는 시험 이름과 날짜를 입력해 직접 등록합니다.</li></ol>
-<p class="notice">시간표는 NEIS에 공개된 데이터에 한해 표시됩니다. 학교별 제공 상황에 따라 일부 정보가 없거나 시간표가 아직 등록되지 않았을 수 있습니다.</p></section>
+<section class="card"><h2>🏫 학교 선택</h2><div class="row"><input id="schoolSearch" value="대구가톨릭대학교사범대학부속무학고등학교" placeholder="학교 이름 검색"><button onclick="searchSchools()">검색</button></div><div id="schoolResults" class="status">학교 이름을 검색하거나 아래에서 검색 결과를 선택해 주세요.</div><div id="chosen" class="schoolname">선택된 학교: 아직 없음</div></section>
+<section class="card"><div class="tabs"><button id="todayTab" class="active" onclick="setView('today')">오늘 급식</button><button id="weekTab" onclick="setView('week')">이번 주</button></div>
+<div class="datebar"><button class="secondary" onclick="shiftDate(-1)">‹ 이전</button><strong id="dateTitle">오늘의 급식</strong><button class="secondary" onclick="shiftDate(1)">다음 ›</button></div>
+<div id="mealList"><div class="empty">먼저 학교를 검색하고 선택해 주세요.</div></div><button class="full" onclick="loadMeals()">급식표 새로고침</button><div class="status" id="status"></div></section>
+<section class="card"><h2>알레르기 번호 안내</h2><div class="status">1 난류 · 2 우유 · 3 메밀 · 4 땅콩 · 5 대두 · 6 밀 · 7 고등어 · 8 게 · 9 새우 · 10 돼지고기 · 11 복숭아 · 12 토마토 · 13 아황산류 · 14 호두 · 15 닭고기 · 16 쇠고기 · 17 오징어 · 18 조개류 · 19 잣</div></section>
+<div class="foot">급식 데이터 출처: 교육부 NEIS · kschoolinfo API를 통해 조회합니다.<br>데이터 제공 여부와 정확성은 학교의 NEIS 등록 상태에 따라 달라질 수 있습니다.</div>
 </main>
 <script>
+const API='https://kschoolinfo.com/api/v1';
 const $=id=>document.getElementById(id);
-let timetable=[];
-function loadSettings(){['key','edu','school','kind','grade','klass'].forEach(k=>{let v=localStorage.getItem('cfg_'+k);if(v!==null)$(k).value=v});$('weekDate').value=weekStart(new Date());}
-function saveSettings(){['key','edu','school','kind','grade','klass'].forEach(k=>localStorage.setItem('cfg_'+k,$(k).value.trim()));$('configStatus').textContent='설정을 저장했어요. 이제 시간표를 불러오세요.'}
-function showTab(which){['today','week','exam'].forEach(k=>{$(k+'Pane').classList.toggle('hidden',k!==which);$('tab'+k[0].toUpperCase()+k.slice(1)).classList.toggle('active',k===which)});if(which==='exam')renderExams()}
-function weekStart(d){let x=new Date(d);let day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`}
-function ymd(d){return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`}
-function dateString(s){return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`}
-async function fetchDay(date){
- const base='https://open.neis.go.kr/hub/'+$('kind').value+'Timetable';
- const params=new URLSearchParams({KEY:$('key').value.trim(),Type:'json',pIndex:'1',pSize:'100',ATPT_OFCDC_SC_CODE:$('edu').value.trim(),SD_SCHUL_CODE:$('school').value.trim(),GRADE:$('grade').value,CLASS_NM:$('klass').value,ALL_TI_YMD:ymd(date)});
- const r=await fetch(base+'?'+params.toString());if(!r.ok)throw Error('네트워크 오류 ('+r.status+')');
- const j=await r.json();let key=Object.keys(j).find(k=>Array.isArray(j[k])&&j[k].some(part=>Array.isArray(part.row)));let rows=key?(j[key].find(part=>Array.isArray(part.row))||{}).row:[];
- return rows.map(x=>({date:x.ALL_TI_YMD,period:Number(x.PERIO)||0,subject:x.ITRT_CNTNT||'과목 미정',room:x.CLRM_NM||''})).sort((a,b)=>a.period-b.period);
-}
-async function loadTimetable(){
- if(!$('key').value.trim()||!$('edu').value.trim()||!$('school').value.trim()){ $('todayList').innerHTML='<div class="empty">먼저 인증키, 교육청 코드, 학교 코드를 입력해 주세요.</div>';return}
- saveSettings();$('todayList').innerHTML='<div class="empty">시간표를 불러오는 중…</div>';$('weekList').innerHTML='';
+let school=null,view='today',cursor=new Date();cursor.setHours(12,0,0,0);
+const pad=n=>String(n).padStart(2,'0');
+function fmt(d){return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())}
+function dateLabel(d){return `${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일`}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function setView(v){view=v;$('todayTab').classList.toggle('active',v==='today');$('weekTab').classList.toggle('active',v==='week');$('dateTitle').textContent=v==='today'?dateLabel(cursor):'이번 주 급식';loadMeals()}
+function shiftDate(n){cursor.setDate(cursor.getDate()+n);setView(view)}
+async function searchSchools(){
+ const name=$('schoolSearch').value.trim();if(!name){$('schoolResults').textContent='학교 이름을 입력해 주세요.';return}
+ $('schoolResults').textContent='학교를 찾는 중…';
  try{
-  const start=new Date(($('weekDate').value||weekStart(new Date()))+'T12:00:00');const today=new Date();const todayKey=ymd(today);let all=[];
-  for(let i=0;i<5;i++){let d=new Date(start);d.setDate(start.getDate()+i);try{all.push(...await fetchDay(d))}catch(e){if(dateString(ymd(d))===dateString(todayKey))throw e;}}
-  timetable=all;const todayRows=all.filter(x=>x.date===todayKey);
-  $('todayTitle').textContent='오늘의 수업 · '+(today.getMonth()+1)+'월 '+today.getDate()+'일';
-  $('todayList').innerHTML=todayRows.length?todayRows.map((x,i)=>lesson(x,i)).join(''):'<div class="empty">오늘 시간표 데이터가 없어요. 주간 시간표에서 날짜를 확인하거나 학교 설정을 확인해 주세요.</div>';
-  let groups={};all.forEach(x=>(groups[x.date]??=[]).push(x));
-  const names=['일','월','화','수','목','금','토'];
-  $('weekList').innerHTML=Object.keys(groups).sort().map(ds=>{let d=new Date(ds.slice(0,4)+'-'+ds.slice(4,6)+'-'+ds.slice(6,8)+'T12:00:00');return '<div class="dayhead">'+(d.getMonth()+1)+'월 '+d.getDate()+'일 ('+names[d.getDay()]+'요일)</div>'+groups[ds].map(lesson).join('')}).join('')||'<div class="empty">시간표가 없어요.</div>';
-  $('configStatus').textContent='불러오기 완료 · '+all.length+'개 수업';
- }catch(e){$('todayList').innerHTML='<div class="empty">시간표를 불러오지 못했어요.<br>'+escapeHtml(e.message)+'<br><br>인증키, 교육청 코드, 학교 코드, 학년·반을 확인해 주세요.</div>';$('configStatus').textContent='불러오기 실패';}
+  const url=API+'/schools?'+new URLSearchParams({name,region:'경상북도',kind:'고등학교',size:'20'});
+  const r=await fetch(url);if(!r.ok)throw Error('학교 검색 서버 응답 오류 ('+r.status+')');
+  const j=await r.json();if(j.ok===false)throw Error(j.error?.message||'학교 검색 실패');
+  const rows=Array.isArray(j.data)?j.data:(Array.isArray(j.data?.items)?j.data.items:[]);
+  if(!rows.length){$('schoolResults').innerHTML='검색 결과가 없어요. 학교 이름을 짧게 줄여 다시 검색해 보세요.';return}
+  $('schoolResults').innerHTML=rows.map((s,i)=>`<button class="secondary" style="display:block;width:100%;text-align:left;margin:7px 0" onclick="chooseSchool(${i})">${escapeHtml(s.name||s.schoolName||s.SCHUL_NM||'학교 이름')}<div style="font-size:11px;font-weight:400;margin-top:3px">${escapeHtml(s.address||s.addr||s.region||'')} · ${escapeHtml(s.eduCode||s.edu_code||'')} / ${escapeHtml(s.schoolCode||s.school_code||s.code||'')}</div></button>`).join('');
+  window._schoolResults=rows;
+ }catch(e){$('schoolResults').textContent='학교 검색을 실패했어요: '+e.message+'\n인터넷 연결을 확인하고 다시 시도해 주세요.'}
 }
-function lesson(x,i){return `<div class="lesson"><div class="period">${x.period||i+1}교시</div><div><div class="subject">${escapeHtml(x.subject)}</div><div class="small">${x.room?'교실 '+escapeHtml(x.room):'교실 정보 없음'}</div></div></div>`}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function exams(){try{return JSON.parse(localStorage.getItem('exams')||'[]')}catch{return []}}
-function addExam(){const name=$('examName').value.trim(),date=$('examDate').value;if(!name||!date){alert('시험 이름과 날짜를 모두 입력해 주세요.');return}let a=exams();a.push({name,date});a.sort((x,y)=>x.date.localeCompare(y.date));localStorage.setItem('exams',JSON.stringify(a));$('examName').value='';renderExams()}
-function renderExams(){let a=exams();$('examList').innerHTML=a.length?a.map((x,i)=>{let diff=Math.ceil((new Date(x.date+'T00:00:00')-new Date(new Date().toDateString()))/86400000);let dd=diff===0?'D-Day':diff>0?'D-'+diff:'D+'+Math.abs(diff);return `<div class="exam"><div><b>${escapeHtml(x.name)}</b><div class="small">${x.date}</div></div><div class="row" style="flex:0 0 auto"><span class="dday">${dd}</span><button class="secondary smallbtn" onclick="deleteExam(${i})">삭제</button></div></div>`}).join(''):'<div class="empty">등록한 시험이 없어요. 위에서 추가해 보세요.</div>'}
-function deleteExam(i){let a=exams();a.splice(i,1);localStorage.setItem('exams',JSON.stringify(a));renderExams()}
-loadSettings();renderExams();
+function chooseSchool(i){const s=window._schoolResults?.[i];if(!s)return;school={name:s.name||s.schoolName||s.SCHUL_NM||'선택한 학교',eduCode:s.eduCode||s.edu_code||s.ATPT_OFCDC_SC_CODE,schoolCode:s.schoolCode||s.school_code||s.SD_SCHUL_CODE||s.code};if(!school.eduCode||!school.schoolCode){$('status').textContent='검색 결과에서 학교 코드 형식을 확인하지 못했어요. 다른 결과를 선택해 주세요.';return}$('chosen').textContent='선택된 학교: '+school.name;$('schoolResults').innerHTML='<span class="badge">학교 선택 완료</span>';$('status').textContent='학교를 선택했어요.';loadMeals()}
+function monday(d){let x=new Date(d);x.setDate(x.getDate()-(x.getDay()+6)%7);return x}
+async function loadMeals(){
+ if(!school){$('mealList').innerHTML='<div class="empty">먼저 학교를 검색하고 선택해 주세요.</div>';return}
+ $('mealList').innerHTML='<div class="empty">급식표를 불러오는 중…</div>';$('status').textContent='';
+ try{
+  let params={eduCode:school.eduCode,schoolCode:school.schoolCode};
+  if(view==='today'){params.date=fmt(cursor)}else{let start=monday(cursor),end=new Date(start);end.setDate(start.getDate()+4);params.from=fmt(start);params.to=fmt(end)}
+  const r=await fetch(API+'/meals?'+new URLSearchParams(params));if(!r.ok)throw Error('급식 조회 서버 응답 오류 ('+r.status+')');
+  const j=await r.json();if(j.ok===false)throw Error(j.error?.message||'급식 조회 실패');
+  const rows=Array.isArray(j.data)?j.data:[];if(!rows.length){$('mealList').innerHTML='<div class="empty">이 날짜에는 등록된 급식 정보가 없어요.<br>주말·공휴일이거나 아직 메뉴가 공개되지 않았을 수 있어요.</div>';return}
+  const sorted=rows.slice().sort((a,b)=>(a.date||'').localeCompare(b.date||'')+String(a.type?.code||'').localeCompare(String(b.type?.code||'')));
+  $('mealList').innerHTML=sorted.map(m=>{
+   const d=m.date||'';const dateText=d.length===8?`${d.slice(4,6)}월 ${d.slice(6,8)}일`:d;
+   const dishes=(m.menu||[]).map(item=>`<span class="dish">• ${escapeHtml(item.name||item)} ${(item.allergens&&item.allergens.length)?`<span class="allergy">알레르기 ${escapeHtml(item.allergens.join(', '))}</span>`:''}</span>`).join('');
+   return `<div class="menuitem"><div class="daylabel">${view==='week'?dateText+' · ':''}${escapeHtml(m.type?.name||'급식')}</div>${dishes||'메뉴 정보 없음'}${m.calories?`<div class="cal">열량 ${escapeHtml(m.calories)}</div>`:''}</div>`
+  }).join('');
+  $('status').textContent='데이터 출처: NEIS · 마지막 조회 '+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+ }catch(e){$('mealList').innerHTML='<div class="empty">급식표를 불러오지 못했어요.<br>'+escapeHtml(e.message)+'<br><br>잠시 후 다시 시도해 주세요.</div>'}
+}
+searchSchools();
 </script></body></html>
